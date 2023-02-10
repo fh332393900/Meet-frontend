@@ -87,7 +87,7 @@ body {
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(rgb(232, 240, 255) 0%, rgb(255, 255, 255) 52.08%);;
+  background: linear-gradient(rgb(232, 240, 255) 0%, rgb(255, 255, 255) 52.08%) !important;
 }
 
 a {
