@@ -1,10 +1,22 @@
+import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
-import { Button } from '@chakra-ui/react'
+import { Button } from '@chakra-ui/react';
+import { ArrowForwardIcon } from '@chakra-ui/icons';
 import styles from '@/styles/Home.module.css';
-import meetSvg from '@/stitic/meet.svg';
+import { userLogin } from '@/pages/api/meet';
 
 export default function Home() {
+
+  const login = async () => {
+    const params = {
+      username: 'fh',
+      password: '111111',
+    };
+    const { data } = await userLogin(params);
+    console.log(data);
+  }
+
   return (
     <>
       <Head>
@@ -15,7 +27,14 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <header>
-          <div className={styles.header}>Meet</div>
+          <div className={styles.header}>
+            <div>Meet</div>
+            <div>
+              <Button colorScheme='teal' variant='outline' colorScheme='messenger' onClick={login}>
+                Log in
+              </Button>
+            </div>
+          </div>
         </header>
         <section>
           <div className={styles.description}>
@@ -25,7 +44,7 @@ export default function Home() {
                 <strong>Using code.</strong>
               </h2>
               <p>Programmatically get data from Figma and four other design tools. All in an open-source Node.js SDK.</p>
-              <Button className={styles.btn} colorScheme='messenger'>Get started</Button>
+              <Button className={styles.btn} rightIcon={<ArrowForwardIcon />} colorScheme='messenger'>Get started</Button>
             </div>
             <img src="https://www.gstatic.com/meet/meet_google_one_carousel_promo_icon_0f14bf8fc61484b019827c071ed8111d.svg" alt="" />
           </div>
