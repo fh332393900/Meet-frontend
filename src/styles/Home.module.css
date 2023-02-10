@@ -13,6 +13,9 @@
   justify-content: space-between;
   -webkit-box-align: center;
   align-items: center;
+  backdrop-filter: blur(7px);
+  background-color: rgba(255, 255, 255, 0.8);
+  transition: all 200ms ease-in 0s;
   height: 3.5rem;
   font-size: 2rem;
   font-weight: 700;
@@ -24,6 +27,16 @@
   top: 0px;
   right: 0px;
   left: 0px;
+}
+.headerRight {
+  display: flex;
+  align-items: center;
+}
+.github {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  margin-left: 24px;
 }
 .description {
   width: 100%;
