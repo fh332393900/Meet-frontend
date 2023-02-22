@@ -7,29 +7,24 @@ import { ArrowForwardIcon } from '@chakra-ui/icons';
 import styles from '@/styles/Home.module.css';
 import { userLogin } from '@/pages/api/meet';
 import { useScroll } from '@/hooks/useScroll';
+import Router from 'next/router';
+
 import githubIcon from '@/static/image/github.png';
 
 
 export default function Home() {
 
   const { myScrollTop } = useScroll();
-  console.log(myScrollTop);
-  
-  useEffect(() => {
-    
-    // window.addEventListener('scroll', () => {
-    //   console.log(window.scrollY);
-    // });
-    
-  }, [])
 
-  const login = async () => {
-    const params = {
-      username: 'fh',
-      password: '111111',
-    };
-    const { data } = await userLogin(params);
-    console.log(data);
+  const toLogin = async () => {
+
+    Router.push('/login');
+    // const params = {
+    //   username: 'fh',
+    //   password: '111111',
+    // };
+    // const { data } = await userLogin(params);
+    // console.log(data);
   }
 
   return (
@@ -45,7 +40,7 @@ export default function Home() {
           <div className={styles.header} style={{backgroundColor: myScrollTop > 100 ? 'rgba(255, 255, 255, 0.8)' : 'transparent' }}>
             <div>Meet</div>
             <div className={styles.headerRight}>
-              <Button colorScheme='teal' variant='outline' colorScheme='messenger' onClick={login}>
+              <Button colorScheme='teal' variant='outline' colorScheme='messenger' onClick={toLogin}>
                 Log in
               </Button>
               <Link href='https://github.com/fh332393900/Meet-frontend'>

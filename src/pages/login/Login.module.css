@@ -1,0 +1,42 @@
+.main {
+  background: url(/images/logo-huge.png) -195px -64px / 666px 416px no-repeat, linear-gradient(rgb(232, 240, 255) 0%, rgb(255, 255, 255) 52%, rgb(255, 255, 255) 100%) 0px 0px / auto;
+  background-repeat: no-repeat;
+  background-position: -195px -64px, 0px 0px;
+
+  display: flex;
+  justify-content: space-between;
+  min-height: 100vh;
+  color: rgb(13, 51, 128);
+}
+
+.loginBox {
+  display: flex;
+  padding-top: 8.5rem;
+  padding-bottom: 6rem;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+}
+
+.loginLogo {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  color: rgb(232, 240, 255);
+  flex: 0 0 30em;
+  background: url(/images/logo-huge-dark.png) left -240px bottom -200px / 666px 416px no-repeat, 0px 0px / auto rgb(13, 51, 128);
+  background-repeat: no-repeat;
+  background-position: left -240px bottom -200px, 0px 0px;
+}
+.loginLogo h2 {
+  padding: 0 30px;
+  font-size: 40px;
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: normal;
+  line-height: 1.2;
+  color: rgb(255, 255, 255);
+}

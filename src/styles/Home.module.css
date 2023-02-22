@@ -4,7 +4,8 @@
   justify-content: space-between;
   align-items: center;
   min-height: 100vh;
-  color: rgb(13, 51, 128);;
+  color: rgb(13, 51, 128);
+  background: linear-gradient(rgb(232, 240, 255) 0%, rgb(255, 255, 255) 52.08%) !important;
 }
 
 .header {
