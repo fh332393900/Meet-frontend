@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useEffect, useState } from 'react';
 import styles from './index.module.css';
 import { Avatar, Button, Link, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
@@ -22,7 +23,7 @@ export default function HeadLayout() {
   }
   
   useEffect(() => {
-    const user = getCookie('USER_INFO') ? JSON.parse(getCookie('USER_INFO')) : '';
+    const user = getCookie('USER_INFO') ? JSON.parse(getCookie('USER_INFO') as string) : '';
     setUserInfo(user);
     console.log(userInfo);
   }, []);
@@ -34,7 +35,7 @@ export default function HeadLayout() {
         <div className={styles.headerRight}>
           {
             !userInfo ? (
-              <Button colorScheme='teal' variant='outline' colorScheme='messenger' onClick={toLogin}>
+              <Button variant='outline' colorScheme='messenger' onClick={toLogin}>
                 Log in
               </Button>
             ) : 

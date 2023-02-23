@@ -2,8 +2,10 @@ import { createStandaloneToast } from "@chakra-ui/react";
 
 const { toast } = createStandaloneToast();
 
-export default async (url = "", data = {}, type = "GET") => {
-	const baseUrl = "http://localhost:3000/api"; // 基础路径
+export default async (url = "", data = {} as any, type = "GET") => {
+	const baseUrl = process.env.NODE_ENV === 'development' ? 
+		'http://localhost:3000/api' :
+		'https://stevenfeng.cn/api'; // 基础路径
 	type = type.toUpperCase(); // 请求方式小写转换成大写
 	url = baseUrl + url; // 请求地址的拼接
 
@@ -34,7 +36,7 @@ export default async (url = "", data = {}, type = "GET") => {
 		});
 	}
 	try {
-		const response = await fetch(url, requestConfig);
+		const response = await fetch(url, requestConfig as any);
 
 		const responseJson = await response.json();
 		if (responseJson.code === 0) {
