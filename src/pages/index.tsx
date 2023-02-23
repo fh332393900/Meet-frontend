@@ -8,8 +8,9 @@ import styles from '@/styles/Home.module.css';
 import Router from 'next/router';
 import HeadLayout from '@/components/HeadLayout';
 
-export default function Home() {
 
+export default function Home() {
+  
   return (
     <>
       <Head>
@@ -41,6 +42,9 @@ export default function Home() {
             </h2>
           </div>
         </section>
+        <footer className={styles.footer}>
+          © 2023 Meet
+        </footer>
       </main>
     </>
   )

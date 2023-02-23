@@ -22,10 +22,18 @@
 .headerRight {
   display: flex;
   align-items: center;
+  font-size: 14px;
+}
+.userName {
+  padding: 0px 2.25rem 0px 1rem;
+  border: 1px solid rgba(17, 93, 246, 0.2) !important;
+  color: rgb(13, 51, 128) !important;
+  border-radius: 1.5rem !important;
+  font-weight: 600 !important;
 }
 .github {
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   cursor: pointer;
   margin-left: 24px;
 }

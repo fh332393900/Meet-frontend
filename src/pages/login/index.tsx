@@ -8,6 +8,7 @@ import {
 } from '@chakra-ui/react';
 import { userLogin } from '@/pages/api/meet';
 import { useToast } from '@chakra-ui/react';
+import { setCookie } from '@/utils/cookie';
 import Router from 'next/router';
 import Head from 'next/head';
 import styles from './Login.module.css';
@@ -16,6 +17,7 @@ export default function Login() {
   const toast = useToast();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const [loading, setLoading] = useState(false);
 
   const handleInputChange = (e: any) => {
     setEmail(e.target.value);
@@ -33,7 +35,11 @@ export default function Login() {
       password,
     };
     try {
+      setLoading(true);
       const { data } = await userLogin(params);
+      setCookie('TOKEN', data.token);
+      setCookie('USER_INFO', JSON.stringify(data.userInfo));
+      setLoading(false);
       toast({
         title: `Login success!`,
         position: 'top',
@@ -41,12 +47,11 @@ export default function Login() {
         isClosable: true,
       });
       Router.back();
-      console.log(data)
     } catch (error) {
+      setLoading(false);
       console.log(error);
     }
   }
-
   return (
     <>
       <Head>
@@ -77,6 +82,8 @@ export default function Login() {
               className={styles.loginBtn}
               colorScheme='messenger'
               onClick={login}
+              isLoading={loading}
+              loadingText='Loading'
             >
                 Log in
               </Button>

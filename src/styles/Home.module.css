@@ -77,6 +77,18 @@
   width: 200px;
   font-size: 18px;
 }
+.footer {
+  display: flex;
+  padding-top: 4rem;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  align-items: center;
+  padding-bottom: 1.5rem;
+  color: rgb(13, 51, 128);
+  font-size: 0.875rem;
+  font-weight: 400;
+}
 
 @media (max-width: 1000px)  {
   .description h2 {
