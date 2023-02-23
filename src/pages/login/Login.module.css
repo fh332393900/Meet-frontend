@@ -10,15 +10,53 @@
 }
 
 .loginBox {
+  padding: 4rem;
+  max-width: 40rem;
+  width: 100%;
   display: flex;
-  padding-top: 8.5rem;
   padding-bottom: 6rem;
   -webkit-box-align: center;
   align-items: center;
   -webkit-box-pack: center;
   justify-content: center;
 }
-
+.title {
+  font-weight: 700;
+  font-size: 2.5rem;
+  line-height: 1.2;
+  margin: 0px 0px 2rem;
+  text-align: left;
+  color: rgb(13, 51, 128);
+}
+.formBox {
+  width: 100%;
+}
+.formLabel {
+  margin-bottom: 24px;
+}
+.loginBtn {
+  margin-top: 2rem;
+  width: 100%;
+  font-size: 600 !important;
+  height: 3rem !important;
+  text-align: center !important;
+  border-radius: 1.5rem !important;
+  font-size: 1rem !important;
+}
+.signUp {
+  margin-top: 2rem;
+  color: rgb(96, 105, 119);
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+.signUp span {
+  cursor: pointer;
+  color: rgb(17, 93, 246);
+  transition: color 100ms linear 0s;
+}
+.signUp span:hover {
+  color: rgb(13, 51, 128);
+}
 .loginLogo {
   display: flex;
   -webkit-box-align: center;
@@ -30,6 +68,15 @@
   background: url(/images/logo-huge-dark.png) left -240px bottom -200px / 666px 416px no-repeat, 0px 0px / auto rgb(13, 51, 128);
   background-repeat: no-repeat;
   background-position: left -240px bottom -200px, 0px 0px;
+}
+@media (max-width: 1000px)  {
+  .main {
+    justify-content: center;
+  }
+  .loginLogo {
+    display: none;
+  }
+
 }
 .loginLogo h2 {
   padding: 0 30px;

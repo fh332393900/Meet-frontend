@@ -77,3 +77,16 @@
   width: 200px;
   font-size: 18px;
 }
+
+@media (max-width: 1000px)  {
+  .description h2 {
+    font-weight: 600;
+    font-size: 3rem;
+  }
+  .description img {
+    margin-left: 7rem;
+    width: 22rem;
+    height: 22rem;
+  }
+
+}
