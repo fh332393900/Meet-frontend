@@ -7,10 +7,12 @@ import Image from 'next/image';
 import githubIcon from '@/static/image/github.png';
 import Router from 'next/router';
 import { getCookie, removeCookie } from '@/utils/cookie';
-import { TriangleDownIcon } from '@chakra-ui/icons';
+import { ArrowBackIcon, SettingsIcon, TriangleDownIcon } from '@chakra-ui/icons';
+import Setting from '../Setting';
 
 export default function HeadLayout() {
   const [userInfo, setUserInfo] = useState<any>('');
+  const [show, setShow] = useState(false);
   const { myScrollTop } = useScroll();
   const toLogin = async () => {
     Router.push('/login');
@@ -21,11 +23,16 @@ export default function HeadLayout() {
     removeCookie('TOKEN');
     setUserInfo('');
   }
+  const openSetting = () => {
+    setShow(true);
+  }
+  const closeSetting = () => {
+    setShow(false);
+  }
   
   useEffect(() => {
     const user = getCookie('USER_INFO') ? JSON.parse(getCookie('USER_INFO') as string) : '';
     setUserInfo(user);
-    console.log(userInfo);
   }, []);
   
   return (
@@ -49,8 +56,8 @@ export default function HeadLayout() {
                   >{ userInfo.username }</Button>
                 </MenuButton>
                 <MenuList>
-                  <MenuItem>Settings</MenuItem>
-                  <MenuItem onClick={logout}>Logout</MenuItem>
+                  <MenuItem icon={<SettingsIcon />} onClick={openSetting}>Settings</MenuItem>
+                  <MenuItem icon={<ArrowBackIcon />} onClick={logout}>Logout</MenuItem>
                 </MenuList>
               </Menu>
             )
@@ -60,6 +67,9 @@ export default function HeadLayout() {
           </Link>
         </div>
       </div>
+      <Setting show={show} closeSetting={closeSetting}></Setting>
+      
+      
     </header>
   )
 }
