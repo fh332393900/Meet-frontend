@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 export const useMediaDevices = (mediaDeviceType?: MediaDeviceType) => {
-  const [medias, setMedias] = useState<any[]>([]);
+  const [medias, setMedias] = useState<MediaDeviceInfo[]>([]);
 
   useEffect(() => {
     async function getEnumerateDevices() {
