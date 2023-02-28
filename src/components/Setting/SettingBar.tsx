@@ -10,7 +10,7 @@ export default function SettingBar(props: any) {
   const settings = ['Radio', 'Video', 'Common'];
   const videoRef = useRef<any>();
   const { medias } = useMediaDevices('audioinput');
-  const { stream, microphoneVoice, closeStream } = useMedia();
+  const { stream, microphoneVolume, closeStream } = useMedia();
 
   useImperativeHandle(props.onRef, () => {
     return {
@@ -64,8 +64,17 @@ export default function SettingBar(props: any) {
                   })
                 }
               </Select>
-              <div>
-                { microphoneVoice }
+              <div className={styles.volume}>
+                {
+                  [1, 2, 3, 4, 5].map(item => {
+                    return (
+                      <>
+                        <div className={styles.volumeItem} 
+                          style={{ backgroundColor: microphoneVolume > item ? '#1967d2' : '#fff'}}></div>
+                      </>
+                    )
+                  })
+                }
               </div>
             </>
             ) : (

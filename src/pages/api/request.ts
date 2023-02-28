@@ -2,6 +2,7 @@ import { createStandaloneToast } from "@chakra-ui/react";
 
 const { toast } = createStandaloneToast();
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default async (url = "", data = {} as any, type = "GET") => {
 	const baseUrl = process.env.NODE_ENV === 'development' ? 
 		'http://localhost:3000/api' :
