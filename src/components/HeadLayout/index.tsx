@@ -68,8 +68,6 @@ export default function HeadLayout() {
         </div>
       </div>
       <Setting show={show} closeSetting={closeSetting}></Setting>
-      
-      
     </header>
   )
 }

@@ -10,7 +10,7 @@ export default function SettingBar(props: any) {
   const settings = ['Radio', 'Video', 'Common'];
   const videoRef = useRef<any>();
   const { medias } = useMediaDevices('audioinput');
-  const { stream, closeStream } = useMedia();
+  const { stream, microphoneVoice, closeStream } = useMedia();
 
   useImperativeHandle(props.onRef, () => {
     return {
@@ -20,13 +20,12 @@ export default function SettingBar(props: any) {
 
   const selectBar = (index: number) => {
     setActive(index);
+    setTimeout(() => {
+      if (stream && index === 1) {
+        videoRef.current.srcObject = stream;
+      }
+    });
   };
-
-  useEffect(() => {
-    if (stream) {
-      videoRef.current.srcObject = stream;
-    }
-  }, [stream]);
 
   return (
     <>
@@ -49,21 +48,37 @@ export default function SettingBar(props: any) {
           }
         </div>
         <div className={styles.right}>
-          <Select placeholder='Select option'>
-            {
-              medias.map((item, index) => {
-                return (
-                  <option
-                    value={item.deviceId}
-                    key={index}
-                  >
-                    { item.label }
-                  </option>
-                )
-              })
-            }
-          </Select>
-          <video ref={videoRef} style={{width: '36px', height: '36px'}} autoPlay playsInline></video>
+          { active === 0 ? (
+            <>
+              <Select placeholder='Select option'>
+                {
+                  medias.map((item, index) => {
+                    return (
+                      <option
+                        value={item.deviceId}
+                        key={index}
+                      >
+                        { item.label }
+                      </option>
+                    )
+                  })
+                }
+              </Select>
+              <div>
+                { microphoneVoice }
+              </div>
+            </>
+            ) : (
+              <>
+                <video
+                  ref={videoRef}
+                  style={{width: '50px', height: '50px'}}
+                  autoPlay
+                  playsInline
+                ></video>
+              </>
+            ) 
+          }
         </div>
       </div>
     </>
