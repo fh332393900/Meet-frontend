@@ -8,7 +8,6 @@ import styles from '@/styles/Home.module.css';
 import Router from 'next/router';
 import HeadLayout from '@/components/HeadLayout';
 
-
 export default function Home() {
   
   return (

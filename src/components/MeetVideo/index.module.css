@@ -1,0 +1,15 @@
+.default {
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 36px;
+  color: #fff;
+  font-weight: 600;
+  width: 30rem;
+  height: 20rem;
+}
+.video {
+  width: 3rem;
+  height: 2rem;
+}
