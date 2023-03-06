@@ -9,7 +9,10 @@ import Router from 'next/router';
 import HeadLayout from '@/components/HeadLayout';
 
 export default function Home() {
-  
+  const toRoom = () => {
+    Router.push('/room');
+  };
+
   return (
     <>
       <Head>
@@ -28,7 +31,14 @@ export default function Home() {
                 <strong>Using code.</strong>
               </h2>
               <p>Programmatically get data from Figma and four other design tools. All in an open-source Node.js SDK.</p>
-              <Button className={styles.btn} rightIcon={<ArrowForwardIcon />} colorScheme='messenger'>Get started</Button>
+              <Button
+                className={styles.btn}
+                rightIcon={<ArrowForwardIcon />}
+                colorScheme='messenger'
+                onClick={toRoom}
+              >
+                Get started
+              </Button>
             </div>
             <img src="https://www.gstatic.com/meet/meet_google_one_carousel_promo_icon_0f14bf8fc61484b019827c071ed8111d.svg" alt="" />
           </div>
