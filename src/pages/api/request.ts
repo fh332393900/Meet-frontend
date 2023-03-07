@@ -1,4 +1,5 @@
 import { createStandaloneToast } from "@chakra-ui/react";
+import { getCookie } from '@/utils/cookie';
 
 const { toast } = createStandaloneToast();
 
@@ -20,7 +21,7 @@ export default async (url = "", data = {} as any, type = "GET") => {
 			url = url + "?" + dataStr;
 		}
 	}
-	let requestConfig = {
+	let requestConfig: any = {
 		credentials: "same-origin",
 		method: type,
 		headers: {
@@ -30,6 +31,13 @@ export default async (url = "", data = {} as any, type = "GET") => {
 		mode: "cors", // 用来决定是否允许跨域请求  值有 三个 same-origin，no-cors（默认）以及 cores;
 		cache: "force-cache", // 是否缓存请求资源 可选值有 default 、 no-store 、 reload 、 no-cache 、 force-cache 或者 only-if-cached 。
 	};
+
+	const TOKEN = getCookie('TOKEN') ? getCookie('TOKEN') : '';
+	console.log(TOKEN);
+	if (TOKEN) {
+		requestConfig.headers['Authorization'] = `Bearer ${TOKEN}`;
+	}
+	console.log(requestConfig);
 
 	if (type == "POST") {
 		Object.defineProperty(requestConfig, "body", {
@@ -43,7 +51,7 @@ export default async (url = "", data = {} as any, type = "GET") => {
 		if (responseJson.code === 0) {
 			return responseJson;
 		} else if (responseJson.code === 400) {
-			toast({ 
+			toast({
 				title: responseJson.msg || 'Error!',
 				status: 'error',
 				position: 'top',

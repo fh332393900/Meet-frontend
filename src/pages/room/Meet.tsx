@@ -3,18 +3,36 @@ import { useMedia } from '@/hooks/useMedia';
 import MeetVideo from '@/components/MeetVideo';
 import { Socket } from 'socket.io-client';
 import { Button } from '@chakra-ui/react';
+import { getMeet } from '@/pages/api/meet';
+import Router from 'next/router';
 const { io } = require('socket.io-client');
 
-export default function Meet() {
-  const [remoteStream, setRemoteStream] = useState<any>();
+interface PropsType {
+  roomId: string;
+}
+
+export default function Meet(props: PropsType) {
+  const [remoteStream, setRemoteStream] = useState<MediaStream | null>(null);
+  const [meetInfo, setMeetInfo] = useState({});
   const { stream } = useMedia();
-  // const stream = null;
+  const { roomId } = props;
 
   let socket: Socket;
   let peerConnection: RTCPeerConnection;
 
+  const getMeetDetail = async () => {
+    const params = { id: roomId }
+    const { data } = await getMeet(params);
+    setMeetInfo(data);
+    if (!data) {
+      setTimeout(() => {
+        Router.push('/');
+      }, 2000);
+    }
+  }
+
   const init = () => {
-    const url = `http://localhost:3000?roomId=1`;
+    const url = `http://localhost:3000?roomId=${roomId}`;
       //和服务器建立长连接
       socket = io.connect(url, {
         withCredentials: true,
@@ -22,7 +40,6 @@ export default function Meet() {
 
     // 新用户加入
     socket.on("joined", () => {
-      console.log(1111111111);
       createPeerConnecion();
     });
     // 其他加入
@@ -96,7 +113,6 @@ export default function Meet() {
           },
         ],
       });
-      console.log(22222222);
       // 协商的时候监听到 这里做端对端的消息日志
       peerConnection.onicecandidate = (e) => {
         console.log(e, '----------e----------')
@@ -111,7 +127,6 @@ export default function Meet() {
         }
       }
       let remoteStreamTemp = new MediaStream();
-      // remoteVideo.srcObject = remoteStream
       // 远端走ontrack
       peerConnection.ontrack = (e) => {
         // 设置给远端 显示远端流
@@ -132,9 +147,9 @@ export default function Meet() {
     }
   }
 
-  // useEffect(() => {
-  //   // init();
-  // }, [])
+  useEffect(() => {
+    getMeetDetail();
+  }, []);
 
   return (
     <>

@@ -1,7 +1,16 @@
 /* eslint-disable */
 import { useEffect, useState } from 'react';
 import styles from './index.module.css';
-import { Avatar, Button, Link, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
+import {
+  Avatar,
+  Button,
+  Link,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  useToast,
+} from '@chakra-ui/react';
 import { useScroll } from '@/hooks/useScroll';
 import Image from 'next/image';
 import githubIcon from '@/static/image/github.png';
@@ -14,21 +23,29 @@ export default function HeadLayout() {
   const [userInfo, setUserInfo] = useState<any>('');
   const [show, setShow] = useState(false);
   const { myScrollTop } = useScroll();
+  const toast = useToast();
+
   const toLogin = async () => {
     Router.push('/login');
-  }
+  };
 
   const logout = () => {
     removeCookie('USER_INFO');
     removeCookie('TOKEN');
     setUserInfo('');
-  }
+    toast({
+      title: `Logout success!`,
+      position: 'top',
+      status: 'success',
+      isClosable: true,
+    });
+  };
   const openSetting = () => {
     setShow(true);
-  }
+  };
   const closeSetting = () => {
     setShow(false);
-  }
+  };
   
   useEffect(() => {
     const user = getCookie('USER_INFO') ? JSON.parse(getCookie('USER_INFO') as string) : '';
