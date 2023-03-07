@@ -51,7 +51,11 @@ export default function Login() {
       setLoading(false);
       console.log(error);
     }
-  }
+  };
+  const toSignup = () => {
+    Router.push('/signup');
+  };
+  
   return (
     <>
       <Head>
@@ -88,7 +92,7 @@ export default function Login() {
                 Log in
               </Button>
             <div className={styles.signUp}>
-              Don’t have an account? <span>Sign Up here →</span>
+              Don’t have an account? <span onClick={toSignup}>Sign Up here →</span>
             </div>
           </div>
         </div>
