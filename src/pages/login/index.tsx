@@ -46,7 +46,7 @@ export default function Login() {
         status: 'success',
         isClosable: true,
       });
-      Router.back();
+      Router.push('/');
     } catch (error) {
       setLoading(false);
       console.log(error);

@@ -6,7 +6,7 @@ import {
   Input,
   Button
 } from '@chakra-ui/react';
-import { userLogin } from '@/pages/api/meet';
+import { register } from '@/pages/api/user';
 import { useToast } from '@chakra-ui/react';
 import { setCookie } from '@/utils/cookie';
 import Router from 'next/router';
@@ -16,8 +16,8 @@ import styles from './signup.module.css';
 export default function Login() {
   const toast = useToast();
   const [name, setName] = useState('');
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
   const handleNameChange = (e: any) => {
@@ -34,11 +34,31 @@ export default function Login() {
   const isPasswordError = password === '';
 
   const signUp = async ()  => {
+    if (isNameError || isError || isPasswordError) return;
     const params = {
       username: name,
-      email: email,
+      email,
       password,
+      nickname: '',
+      phone: 0,
+      sex: 0,
+      birthday: '',
+      avatar: '',
     };
+    setLoading(true);
+    try {
+      await register(params);
+      setLoading(false);
+      toast({
+        title: `Sign Up success!`,
+        position: 'top',
+        status: 'success',
+        isClosable: true,
+      });
+      toLogin();
+    } catch (error) {
+      setLoading(false);
+    }
   }
   const toLogin = () => {
     Router.push('/login')
