@@ -5,6 +5,7 @@ import { Socket } from 'socket.io-client';
 import { Button } from '@chakra-ui/react';
 import { getMeet } from '@/pages/api/meet';
 import Router from 'next/router';
+import { getCookie } from '@/utils/cookie';
 const { io } = require('socket.io-client');
 
 interface PropsType {
@@ -13,7 +14,11 @@ interface PropsType {
 
 export default function Meet(props: PropsType) {
   const [remoteStream, setRemoteStream] = useState<MediaStream | null>(null);
-  const [meetInfo, setMeetInfo] = useState({});
+  const [userInfo, setUserInfo] = useState<any>({});
+  const [remoteUser, setRemoteUser] = useState<any>({});
+  const [meetInfo, setMeetInfo] = useState({
+    meetName: ''
+  });
   const { stream } = useMedia();
   const { roomId } = props;
 
@@ -31,8 +36,8 @@ export default function Meet(props: PropsType) {
     }
   }
 
-  const init = () => {
-    const url = `http://localhost:3000?roomId=${roomId}`;
+  function init() {
+    const url = `http://localhost:3000?roomId=${roomId}&userId=${userInfo.id}`;
       //和服务器建立长连接
       socket = io.connect(url, {
         withCredentials: true,
@@ -40,13 +45,18 @@ export default function Meet(props: PropsType) {
 
     // 新用户加入
     socket.on("joined", () => {
+      console.log(11111111);
       createPeerConnecion();
     });
     // 其他加入
-    socket.on("otherjoin", (roomid, id) => {
-      console.log('otherjoin')
+    socket.on("otherjoin", (user) => {
+      console.log(22222222);
+      if (user) {
+        setRemoteUser(JSON.parse(user));
+      }
+      console.log('otherjoin', JSON.parse(user));
+      
       // 开始媒体协商
-      // createPeerConnecion(); // 创建链接并绑定
       call();
     });
     //接收服务器返回的信息
@@ -126,36 +136,39 @@ export default function Meet(props: PropsType) {
           })
         }
       }
-      let remoteStreamTemp = new MediaStream();
-      // 远端走ontrack
-      peerConnection.ontrack = (e) => {
-        // 设置给远端 显示远端流
-        e.streams[0].getTracks().forEach((track) => {
-          remoteStreamTemp.addTrack(track);
-        })
-        setRemoteStream(remoteStreamTemp);
-        console.log('远端流',e.streams[0], 'localStream', stream);
-      }
     }
-    // 当连接在了，给本地设置 加到pc中音频和视频的媒体流
-    if (stream) {
-      stream.getTracks().forEach((track) => {
-        // 
-        console.log('加到pc中音频和视频的媒体流',track);
-        peerConnection.addTrack(track, stream);
+    let remoteStreamTemp = new MediaStream();
+    // 远端走ontrack
+    peerConnection.ontrack = (e) => {
+      // 设置给远端 显示远端流
+      e.streams[0].getTracks().forEach((track) => {
+        remoteStreamTemp.addTrack(track);
       })
+      setRemoteStream(remoteStreamTemp);
+      console.log('远端流',e.streams[0], 'localStream', stream);
     }
+    console.log('stream-----------------', stream)
+    // 当连接在了，给本地设置 加到pc中音频和视频的媒体流
+    stream?.getTracks().forEach((track) => {
+      console.log('加到pc中音频和视频的媒体流',track);
+      peerConnection.addTrack(track, stream);
+    })
   }
 
   useEffect(() => {
+    const user = getCookie('USER_INFO') ? JSON.parse(getCookie('USER_INFO') as string) : '';
+    setUserInfo(user);
     getMeetDetail();
+    // init()
   }, []);
 
   return (
     <>
       <div>
-        远程：
-        <MeetVideo stream={remoteStream} userInfo={{userName: 'fh'}}></MeetVideo>
+        <h3>{ meetInfo.meetName }</h3>
+        <MeetVideo stream={stream} userInfo={userInfo}></MeetVideo>
+        <MeetVideo stream={remoteStream} userInfo={remoteUser}></MeetVideo>
+
         <Button onClick={init}>Connect</Button>
       </div>
     </>

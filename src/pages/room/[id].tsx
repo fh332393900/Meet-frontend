@@ -1,13 +1,14 @@
 import Head from "next/head";
 import styles from './room.module.css';
 import dynamic from 'next/dynamic';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 
 const DynamicMeet = dynamic(() => import('./Meet'), { ssr: false });
 
 export default function Room() {
   const router = useRouter();
   const { id } = router.query;
+
 
   return (
     <>

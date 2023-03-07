@@ -1,5 +1,5 @@
 import { Button } from '@chakra-ui/react';
-import { useEffect, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import styles from './index.module.css';
 
 interface PropsType {
@@ -35,7 +35,8 @@ export default function MeetVideo(props: PropsType) {
               autoPlay
               playsInline
             ></video>
-            {/* <Button onClick={toggleVideo}>stop/start</Button> */}
+            <div style={{color: '#fff'}}>{ userInfo.userName }</div>
+            <Button onClick={toggleVideo}>stop/start</Button>
           </>
           
           
