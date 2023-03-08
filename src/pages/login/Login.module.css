@@ -85,3 +85,27 @@
   line-height: 1.2;
   color: rgb(255, 255, 255);
 }
+
+
+.minting-now-pulse:before {
+  content: '';
+  position: relative;
+  display: block;
+  width: 300%;
+  height: 300%;
+  box-sizing: border-box;
+  background-color: #4ade80;
+  border-radius: 100%;
+  margin-left: -100%;
+  margin-top: -100%;
+  animation: pulse-ring 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(.33);
+  }
+  60%, 100% {
+    opacity: 0;
+  }
+}

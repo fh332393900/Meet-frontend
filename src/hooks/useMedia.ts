@@ -25,7 +25,7 @@ export const useMedia = (constraints: MediaStreamConstraints = constraintsDefaul
     }
     setStream(null);
     await audioContext?.close();
-  }
+  };
 
   const getMicrophoneVolume = async (mediaStream: MediaStream) => {
     /**
@@ -43,7 +43,7 @@ export const useMedia = (constraints: MediaStreamConstraints = constraintsDefaul
       setMicrophoneVolume(volume);
     }
     microphone?.connect(node).connect(audioContext.destination);
-  }
+  };
 
   useEffect(() => {
     navigator.mediaDevices.getUserMedia(constraints).then(mediaStream => {

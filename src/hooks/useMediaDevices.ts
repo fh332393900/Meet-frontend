@@ -16,7 +16,7 @@ export const useMediaDevices = (mediaDeviceType?: MediaDeviceType) => {
       }
     }
     getEnumerateDevices();
-  }, [mediaDeviceType])
+  }, [mediaDeviceType]);
 
   return { medias };
 }
