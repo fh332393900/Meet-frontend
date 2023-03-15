@@ -23,9 +23,9 @@ export default function Home() {
 
   const quickCreate = async () => {
     const params = {
-    meetName: `${userInfo.username}'s Metting`,
-    meetNeedPassword: MeetNeedPassword.NO,
-    meetPassword: '',
+      meetName: `${userInfo.username}'s Metting`,
+      meetNeedPassword: MeetNeedPassword.NO,
+      meetPassword: '',
     };
     setLoading(true);
     try {

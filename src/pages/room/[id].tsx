@@ -9,7 +9,6 @@ export default function Room() {
   const router = useRouter();
   const { id } = router.query;
 
-
   return (
     <>
       <Head>
