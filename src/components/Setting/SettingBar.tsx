@@ -1,6 +1,7 @@
 import { Button, Select } from '@chakra-ui/react';
 import { useEffect, useState, useRef, useImperativeHandle } from 'react';
 import styles from './setting.module.css';
+import CanvasVideo from '../MeetVideo/CanvasVideo';
 
 import { useMediaDevices } from '@/hooks/useMediaDevices';
 import { useMedia } from '@/hooks/useMedia';
@@ -9,6 +10,7 @@ export default function SettingBar(props: any) {
   const [active, setActive] = useState(0);
   const settings = ['Radio', 'Video', 'Common'];
   const videoRef = useRef<any>();
+  const videoDom = document.getElementById('videoDom');
   const { medias } = useMediaDevices('audioinput');
   const { stream, microphoneVolume, closeStream } = useMedia();
 
@@ -79,12 +81,17 @@ export default function SettingBar(props: any) {
             </>
             ) : (
               <>
-                <video
-                  ref={videoRef}
-                  style={{width: '50px', height: '50px'}}
-                  autoPlay
-                  playsInline
-                ></video>
+                <div>
+                  <video
+                    id='videoDom'
+                    ref={videoRef}
+                    width="200"
+                    height="150"
+                    autoPlay
+                    playsInline
+                  ></video>
+                  <CanvasVideo videoRef={videoRef}></CanvasVideo>
+                </div>
               </>
             ) 
           }

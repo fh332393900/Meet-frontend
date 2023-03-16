@@ -15,6 +15,8 @@
     "@emotion/styled": "^11.10.5",
     "@next/font": "13.1.6",
     "@reduxjs/toolkit": "^1.9.3",
+    "@tensorflow-models/body-pix": "^2.2.0",
+    "@tensorflow/tfjs": "^4.2.0",
     "@types/node": "18.13.0",
     "@types/react": "18.0.27",
     "@types/react-dom": "18.0.10",
