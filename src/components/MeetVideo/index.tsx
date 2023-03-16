@@ -1,6 +1,7 @@
 import { Button } from '@chakra-ui/react';
 import { useEffect, useState, useRef } from 'react';
 import styles from './index.module.css';
+import CanvasVideo from './CanvasVideo';
 
 interface PropsType {
   stream: MediaStream | null;
@@ -35,6 +36,7 @@ export default function MeetVideo(props: PropsType) {
               autoPlay
               playsInline
             ></video>
+            {/* <CanvasVideo videoRef={videoRef}></CanvasVideo> */}
             <div style={{color: '#fff'}}>{ userInfo.userName }</div>
             <Button onClick={toggleVideo}>stop/start</Button>
           </>

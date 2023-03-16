@@ -29,9 +29,10 @@ export default function Home() {
     };
     setLoading(true);
     try {
-      const { data } = await createMeet(params);
+      // const { data } = await createMeet(params);
       const meetId = 'bee24cdd-0d17-4d5d-8818-e18ba310f7e7';
-      Router.push(`/room/${data.meetId}`);
+      // Router.push(`/room/${data.meetId}`);
+      Router.push(`/room/${meetId}`);
       setLoading(false);
     } catch (error) {
       toast({
