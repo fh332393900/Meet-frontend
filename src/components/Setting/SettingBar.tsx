@@ -13,6 +13,7 @@ export default function SettingBar(props: any) {
   const videoDom = document.getElementById('videoDom');
   const { medias } = useMediaDevices('audioinput');
   const { stream, microphoneVolume, closeStream } = useMedia();
+  const [isMask, setIsMask] = useState(false);
 
   useImperativeHandle(props.onRef, () => {
     return {
@@ -52,45 +53,66 @@ export default function SettingBar(props: any) {
         <div className={styles.right}>
           { active === 0 ? (
             <>
-              <Select placeholder='Select option'>
-                {
-                  medias.map((item, index) => {
-                    return (
-                      <option
-                        value={item.deviceId}
-                        key={index}
-                      >
-                        { item.label }
-                      </option>
-                    )
-                  })
-                }
-              </Select>
-              <div className={styles.volume}>
-                {
-                  [1, 2, 3, 4, 5].map(item => {
-                    return (
-                      <>
-                        <div className={styles.volumeItem} 
-                          style={{ backgroundColor: microphoneVolume > item ? '#1967d2' : '#fff'}}></div>
-                      </>
-                    )
-                  })
-                }
+              <div className={styles.title}>麦克风</div>
+              <div className={styles.microphone}>
+                <Select placeholder='Select option'>
+                  {
+                    medias.map((item, index) => {
+                      return (
+                        <option
+                          value={item.deviceId}
+                          key={index}
+                        >
+                          { item.label }
+                        </option>
+                      )
+                    })
+                  }
+                </Select>
+                <div className={styles.volume}>
+                  {
+                    [1, 2, 3, 4, 5].map(item => {
+                      return (
+                        <>
+                          <div className={styles.volumeItem} 
+                            style={{ backgroundColor: microphoneVolume > item ? '#1967d2' : '#fff'}}></div>
+                        </>
+                      )
+                    })
+                  }
+                </div>
               </div>
+              
             </>
             ) : (
               <>
                 <div>
+                  <div className={styles.title}>视频</div>
                   <video
                     id='videoDom'
+                    style={{display: isMask ? 'none' : 'inline-block'}}
                     ref={videoRef}
                     width="200"
                     height="150"
                     autoPlay
                     playsInline
                   ></video>
-                  <CanvasVideo videoRef={videoRef}></CanvasVideo>
+                  <div>
+                    {
+                      isMask ? (
+                        <CanvasVideo
+                          videoRef={videoRef}
+                          isMask={isMask}
+                        ></CanvasVideo>
+                      ) : ('')
+                    }
+                  </div>
+                  <Button
+                    size="sm"
+                    onClick={
+                      () => setIsMask(!isMask)
+                    }
+                  >{ !isMask ? '背景模糊' : '关闭' }</Button>
                 </div>
               </>
             ) 
