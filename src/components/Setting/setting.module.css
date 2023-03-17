@@ -24,7 +24,8 @@
   border-bottom-right-radius: 36px;
 }
 .right {
-  padding: 24px;
+  flex: 1;
+  padding: 0 24px;
   height: 300px;
 }
 .active {
@@ -38,9 +39,21 @@
   background-color: #e8f0fe;
   box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
 }
-
+.title {
+  color: rgb(26,115,232);
+  font-size: 12px;
+  padding-bottom: 12px;
+}
+.microphone {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.microphoneOptions {
+  width: 200px;
+}
 .volume {
-  margin-top: 20px;
+  margin-left: 100px;
   display: flex;
   align-items: center;
 }
