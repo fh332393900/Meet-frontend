@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { 
   FormControl,
   FormErrorMessage,
@@ -15,14 +15,14 @@ import styles from './Login.module.css';
 
 export default function Login() {
   const toast = useToast();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [email, setEmail] = useState<string>();
+  const [password, setPassword] = useState<string>();
   const [loading, setLoading] = useState(false);
 
-  const handleInputChange = (e: any) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
   }
-  const handlePasswordChange = (e: any) => {
+  const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
   }
 

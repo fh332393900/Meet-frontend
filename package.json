@@ -1,7 +1,8 @@
 {
-  "name": "my-app",
+  "name": "meet-front",
   "version": "0.1.0",
   "private": true,
+  "author": "Steven Feng",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

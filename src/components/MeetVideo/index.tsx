@@ -10,7 +10,7 @@ interface PropsType {
 
 export default function MeetVideo(props: PropsType) {
   const { stream, userInfo } = props;
-  const videoRef = useRef<any>();
+  const videoRef = useRef<HTMLVideoElement | null>(null);
 
   const toggleVideo = () => {
     const [track] = stream?.getVideoTracks() || [];
@@ -19,7 +19,7 @@ export default function MeetVideo(props: PropsType) {
 
   useEffect(() => {
     setTimeout(() => {
-      if (stream) {
+      if (stream && videoRef.current) {
         videoRef.current.srcObject = stream;
       } 
     });
@@ -36,7 +36,7 @@ export default function MeetVideo(props: PropsType) {
               autoPlay
               playsInline
             ></video>
-            {/* <CanvasVideo videoRef={videoRef}></CanvasVideo> */}
+            <CanvasVideo videoRef={videoRef}></CanvasVideo>
             <div style={{color: '#fff'}}>{ userInfo.userName }</div>
             <Button onClick={toggleVideo}>stop/start</Button>
           </>
