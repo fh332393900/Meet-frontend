@@ -1,11 +1,11 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, MutableRefObject } from 'react';
 import * as bodyPix from '@tensorflow-models/body-pix';
 import * as tf from '@tensorflow/tfjs';
 import { model, backgroundBlurAmount, edgeBlurAmount, flipHorizontal } from './config';
 import { Button } from '@chakra-ui/react';
 
 interface PropsType {
-  videoRef: any;
+  videoRef: MutableRefObject<HTMLVideoElement | null>;
   options?: any;
   isMask: boolean;
 }
@@ -13,7 +13,7 @@ interface PropsType {
 export default function CanvasVideo(props: PropsType) {
   const { videoRef, isMask } = props;
   let net: bodyPix.BodyPix | null = null;
-  const videoCanvasRef = useRef<any>();
+  const videoCanvasRef = useRef<HTMLCanvasElement | null>(null);
   
   const init = async () => {
     await loadModel();
@@ -30,22 +30,22 @@ export default function CanvasVideo(props: PropsType) {
   };
 
   const blurBackground = async () => {
-    console.log(net);
     if (!net) return;
-    const segmentation = await net.segmentPerson(videoRef.current);
+    const segmentation = await net.segmentPerson(videoRef.current as HTMLVideoElement);
     try {
       // video dom需要设置width和height，否则绘制会报错
       bodyPix.drawBokehEffect(
-        videoCanvasRef.current, videoRef.current, segmentation, backgroundBlurAmount,
-        edgeBlurAmount, flipHorizontal);
+        videoCanvasRef.current as HTMLCanvasElement,
+        videoRef.current as HTMLVideoElement,
+        segmentation,
+        backgroundBlurAmount,
+        edgeBlurAmount,
+        flipHorizontal
+      );
       requestAnimationFrame(blurBackground);
     } catch (error) {
       console.log(error);
     }
-  };
-
-  const clearCanvas = () => {
-    videoCanvasRef.current.getContext("2d").clearRect(0, 0, videoCanvasRef.current.width,videoCanvasRef.current.height)
   };
 
   useEffect(() => {
