@@ -54,12 +54,17 @@ export default function HeadLayout() {
   
   return (
     <header>
-      <div className={styles.header} style={{backgroundColor: myScrollTop > 100 ? 'rgba(255, 255, 255, 0.8)' : 'transparent' }}>
+      <div className={styles.header} style={{backgroundColor: myScrollTop > 100 ? 'rgba(15, 20, 37, 0.8)' : 'transparent' }}>
         <div>Meet</div>
         <div className={styles.headerRight}>
           {
             !userInfo ? (
-              <Button variant='outline' colorScheme='messenger' onClick={toLogin}>
+              <Button
+                borderRadius={0}
+                variant='outline'
+                colorScheme='messenger'
+                onClick={toLogin}
+              >
                 Log in
               </Button>
             ) : 
@@ -79,9 +84,9 @@ export default function HeadLayout() {
               </Menu>
             )
           }
-          <Link href='https://github.com/fh332393900/Meet-frontend'>
+          {/* <Link href='https://github.com/fh332393900/Meet-frontend'>
             <Image className={styles.github} src={githubIcon} alt="githubicon"></Image>
-          </Link>
+          </Link> */}
         </div>
       </div>
       <Setting show={show} closeSetting={closeSetting}></Setting>

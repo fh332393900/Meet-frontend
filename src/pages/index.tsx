@@ -4,6 +4,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { Button, useToast } from '@chakra-ui/react';
 import { ArrowForwardIcon } from '@chakra-ui/icons';
+import { UilFacebookF, UilTwitter, UilGithub } from '@iconscout/react-unicons';
 import styles from '@/styles/Home.module.css';
 import Router from 'next/router';
 import HeadLayout from '@/components/HeadLayout';
@@ -64,13 +65,14 @@ export default function Home() {
           <div className={styles.description}>
             <div className={styles.descriptionText}>
               <h2>
-                Read and display data from designs.<br />
-                <strong>Using code.</strong>
+                Affordable Big IT & Technology Solutions<br />
               </h2>
-              <p>Programmatically get data from Figma and four other design tools. All in an open-source Node.js SDK.</p>
+              <p>Bring On Monday, the innovative small business online accounting services that both you and your bottom line will love.</p>
               <Button
                 className={styles.btn}
                 rightIcon={<ArrowForwardIcon />}
+                width='180px'
+                borderRadius={0}
                 colorScheme='messenger'
                 isLoading={loading}
                 onClick={start}
@@ -78,7 +80,7 @@ export default function Home() {
                 Get started
               </Button>
             </div>
-            <img src="https://www.gstatic.com/meet/meet_google_one_carousel_promo_icon_0f14bf8fc61484b019827c071ed8111d.svg" alt="" />
+            <Image src="/images/index.png" width="200" height="200" alt="" />
           </div>
         </section>
         <section>
@@ -89,9 +91,44 @@ export default function Home() {
             </h2>
           </div>
         </section>
+        <div className={styles.white}>
+
+        </div>
         <footer className={styles.footer}>
-          © 2023 Meet
+          <div className={styles.footerLogo}>
+            <Image src="/images/logo.png" width="80" height="80" alt='logo' />
+            <p>
+              Sed perspiciatis unde omnste natus error voluptatem accusanti doloreue audantium totamrem aeriam.
+            </p>
+          </div>
+          <div>
+            <div className={styles.footerTitle}>Newsletter</div>
+            <p>Sed perspiciatis unde omnste natus error voluptatem accusante.</p>
+            <div className={styles.follow} style={{marginTop: '24px'}}>
+              Follow Me
+            </div>
+            <div className={styles.icons}>
+              <Link className={styles.icon}>
+                <UilFacebookF></UilFacebookF>
+              </Link>
+              <Link className={styles.icon} target="_blank" href="https://twitter.com/StevenF00153916">
+                <UilTwitter></UilTwitter>
+              </Link>
+              <Link className={styles.icon} target="_blank" href="https://github.com/fh332393900">
+                <UilGithub ></UilGithub>
+              </Link>
+            </div>
+          </div>
+          <img className={styles.line} src="/images/footer-bg-line-shape.png" alt='logo' />
+          <img className={styles.shape} src="/images/footer-right.png" alt='shape' />
         </footer>
+        
+        <div className={styles.copy}>
+          <div style={{marginBottom: '8px'}}>Copyright © 2023.Steven Feng All rights reserved</div>
+          <Link href="http://beian.miit.gov.cn/" target="_blank">
+            蜀ICP备2023000864号-1
+          </Link>
+        </div>
       </main>
     </>
   )
