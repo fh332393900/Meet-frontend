@@ -16,7 +16,8 @@
   -webkit-box-align: center;
   align-items: center;
   backdrop-filter: blur(7px);
-  background-color: rgba(255, 255, 255, 0.8);
+  /* background-color: rgba(255, 255, 255, 0.8); */
+  background-color: rgb(27, 31, 46, 0.8);
   transition: all 200ms ease-in 0s;
   height: 3.5rem;
   font-size: 2rem;
@@ -46,18 +47,18 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 6rem 0 0 2rem;
+  padding: 2rem;
   min-height: 100vh;
   color: #fff;
   
 }
 .descriptionText {
-  max-width: 35rem;
+  min-width: 20rem;
 }
 .description h2 {
   line-height: 1.1;
   font-weight: 700;
-  font-size: 3rem;
+  font-size: 3.5rem;
   padding-top: 2rem;
   margin-bottom: 2rem;
 }
@@ -69,22 +70,24 @@
   margin-left: 12rem;
   width: 25rem;
   height: 25rem;
+  margin-bottom: 4.5rem;
 }
 
 .descriptionText p {
   font-size: 1.2rem;
   line-height: 1.6rem;
-  /* color: rgb(13, 51, 128); */
   color: #fff;
   opacity: 0.8;
   margin-bottom: 2rem;
 }
 
-.btn {
+.chakra-button {
   width: 200px;
   font-size: 18px;
+  border-radius: 0;
 }
 .footer {
+  width: 100%;
   display: flex;
   padding-top: 4rem;
   -webkit-box-pack: justify;
@@ -92,19 +95,26 @@
   -webkit-box-align: center;
   align-items: center;
   padding-bottom: 1.5rem;
-  /* color: rgb(13, 51, 128); */
   color: #fff;
   font-size: 0.875rem;
   font-weight: 400;
 }
+.copy {
+  width: 100%;
+  font-size: 14px;
+  color: #dcdcdc;
+  background-color: #0f1425;
+  padding: 20px 12px 12px 10px;
+  text-align: center;
+}
 
 @media (max-width: 1000px)  {
   .description h2 {
-    font-weight: 600;
+    font-weight: 700;
     font-size: 3rem;
   }
   .description img {
-    margin-left: 7rem;
+    margin-left: 3rem;
     width: 22rem;
     height: 22rem;
   }

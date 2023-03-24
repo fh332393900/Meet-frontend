@@ -65,9 +65,9 @@ export default function Home() {
             <div className={styles.descriptionText}>
               <h2>
                 Affordable Big IT & Technology Solutions<br />
-                <strong>Using code.</strong>
+                {/* <strong>Using code.</strong> */}
               </h2>
-              <p>Programmatically get data from Figma and four other design tools. All in an open-source Node.js SDK.</p>
+              <p>Bring On Monday, the innovative small business online accounting services that both you and your bottom line will love.</p>
               <Button
                 className={styles.btn}
                 rightIcon={<ArrowForwardIcon />}
@@ -90,8 +90,13 @@ export default function Home() {
           </div>
         </section>
         <footer className={styles.footer}>
-          © 2023 Meet
         </footer>
+        <div className={styles.copy}>
+          <div style={{marginBottom: '8px'}}>Copyright © 2023.Steven Feng All rights reserved</div>
+          <Link href="http://beian.miit.gov.cn/" target="_blank">
+            蜀ICP备2023000864号-1
+          </Link>
+        </div>
       </main>
     </>
   )
