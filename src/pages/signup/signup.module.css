@@ -49,7 +49,7 @@
 }
 .signUp span {
   cursor: pointer;
-  color: rgb(17, 93, 246);
+  color: #115df6;
   transition: color 100ms linear 0s;
 }
 .signUp span:hover {

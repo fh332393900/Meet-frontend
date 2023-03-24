@@ -64,7 +64,7 @@ export default function Home() {
           <div className={styles.description}>
             <div className={styles.descriptionText}>
               <h2>
-                Read and display data from designs.<br />
+                Affordable Big IT & Technology Solutions<br />
                 <strong>Using code.</strong>
               </h2>
               <p>Programmatically get data from Figma and four other design tools. All in an open-source Node.js SDK.</p>
@@ -78,7 +78,7 @@ export default function Home() {
                 Get started
               </Button>
             </div>
-            <img src="https://www.gstatic.com/meet/meet_google_one_carousel_promo_icon_0f14bf8fc61484b019827c071ed8111d.svg" alt="" />
+            <Image src="/images/index.png" width="200" height="200" alt="" />
           </div>
         </section>
         <section>
