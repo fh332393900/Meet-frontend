@@ -89,7 +89,23 @@ export default function Home() {
             </h2>
           </div>
         </section>
+        <div className={styles.white}>
+
+        </div>
         <footer className={styles.footer}>
+          <div className={styles.footerLogo}>
+            <Image src="/images/logo.png" width="80" height="80" alt='logo' />
+            <p>
+              Sed perspiciatis unde omnste natus error voluptatem accusanti doloreue audantium totamrem aeriam.
+            </p>
+          </div>
+          <div>
+            <div className={styles.footerTitle}>Newsletter</div>
+            <p>Sed perspiciatis unde omnste natus error voluptatem accusante.</p>
+            <div className={styles.footerTitle} style={{marginTop: '24px'}}>Follow Us</div>
+          </div>
+          <img className={styles.line} src="/images/footer-bg-line-shape.png" alt='logo' />
+          <img className={styles.shape} src="/images/footer-right.png" alt='shape' />
         </footer>
         <div className={styles.copy}>
           <div style={{marginBottom: '8px'}}>Copyright © 2023.Steven Feng All rights reserved</div>

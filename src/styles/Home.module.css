@@ -86,18 +86,50 @@
   font-size: 18px;
   border-radius: 0;
 }
+.white {
+  background-color: #fff;
+  width: 100%;
+  padding: 2rem;
+  height: 500px;
+}
 .footer {
+  position: relative;
   width: 100%;
   display: flex;
-  padding-top: 4rem;
-  -webkit-box-pack: justify;
+  padding: 2rem;
   justify-content: space-between;
-  -webkit-box-align: center;
   align-items: center;
+  overflow: hidden;
   padding-bottom: 1.5rem;
   color: #fff;
   font-size: 0.875rem;
   font-weight: 400;
+  font-size: 16px;
+  z-index: 1;
+}
+.footerLogo {
+  width: 30rem;
+}
+.footerLogo p {
+  margin-top: 12px;
+}
+.line {
+  position: absolute;
+  right: 0;
+  bottom: -82px;
+  z-index: -2;
+}
+.shape {
+  position: absolute;
+  right: 0;
+  bottom: -12px;
+  z-index: -1;
+}
+.footerTitle {
+  font-size: 24px;
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 24px;
 }
 .copy {
   width: 100%;
