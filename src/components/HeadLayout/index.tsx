@@ -59,7 +59,12 @@ export default function HeadLayout() {
         <div className={styles.headerRight}>
           {
             !userInfo ? (
-              <Button variant='outline' colorScheme='messenger' onClick={toLogin}>
+              <Button
+                borderRadius={0}
+                variant='outline'
+                colorScheme='messenger'
+                onClick={toLogin}
+              >
                 Log in
               </Button>
             ) : 

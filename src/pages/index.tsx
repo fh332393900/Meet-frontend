@@ -66,12 +66,13 @@ export default function Home() {
             <div className={styles.descriptionText}>
               <h2>
                 Affordable Big IT & Technology Solutions<br />
-                {/* <strong>Using code.</strong> */}
               </h2>
               <p>Bring On Monday, the innovative small business online accounting services that both you and your bottom line will love.</p>
               <Button
                 className={styles.btn}
                 rightIcon={<ArrowForwardIcon />}
+                width='180px'
+                borderRadius={0}
                 colorScheme='messenger'
                 isLoading={loading}
                 onClick={start}
