@@ -125,11 +125,27 @@
   bottom: -12px;
   z-index: -1;
 }
+.icons {
+  display: flex;
+  color: #b6bace;
+}
+.icons .icon {
+  margin-right: 12px;
+}
+.icon:hover {
+  color: #674df3;
+}
 .footerTitle {
   font-size: 24px;
   color: #fff;
   font-weight: 600;
   margin-bottom: 24px;
+}
+.follow {
+  font-size: 18px;
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 16px;
 }
 .copy {
   width: 100%;

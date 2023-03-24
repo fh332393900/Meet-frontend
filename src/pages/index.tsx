@@ -4,6 +4,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { Button, useToast } from '@chakra-ui/react';
 import { ArrowForwardIcon } from '@chakra-ui/icons';
+import { UilFacebookF, UilTwitter, UilGithub } from '@iconscout/react-unicons';
 import styles from '@/styles/Home.module.css';
 import Router from 'next/router';
 import HeadLayout from '@/components/HeadLayout';
@@ -102,11 +103,25 @@ export default function Home() {
           <div>
             <div className={styles.footerTitle}>Newsletter</div>
             <p>Sed perspiciatis unde omnste natus error voluptatem accusante.</p>
-            <div className={styles.footerTitle} style={{marginTop: '24px'}}>Follow Us</div>
+            <div className={styles.follow} style={{marginTop: '24px'}}>
+              Follow Me
+            </div>
+            <div className={styles.icons}>
+              <Link className={styles.icon}>
+                <UilFacebookF></UilFacebookF>
+              </Link>
+              <Link className={styles.icon} target="_blank" href="https://twitter.com/StevenF00153916">
+                <UilTwitter></UilTwitter>
+              </Link>
+              <Link className={styles.icon} target="_blank" href="https://github.com/fh332393900">
+                <UilGithub ></UilGithub>
+              </Link>
+            </div>
           </div>
           <img className={styles.line} src="/images/footer-bg-line-shape.png" alt='logo' />
           <img className={styles.shape} src="/images/footer-right.png" alt='shape' />
         </footer>
+        
         <div className={styles.copy}>
           <div style={{marginBottom: '8px'}}>Copyright © 2023.Steven Feng All rights reserved</div>
           <Link href="http://beian.miit.gov.cn/" target="_blank">
