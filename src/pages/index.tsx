@@ -80,7 +80,7 @@ export default function Home() {
                 Get started
               </Button>
             </div>
-            <Image src="/images/index.png" width="200" height="200" alt="" />
+            <img src="/images/index.png" alt="" />
           </div>
         </section>
         <section>
